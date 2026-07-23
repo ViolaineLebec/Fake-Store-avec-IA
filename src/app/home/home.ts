@@ -11,6 +11,8 @@ import { ProductCard } from '../product-card/product-card';
 export class Home implements OnInit {
   products = signal<Product[]>([]);
 
+  isLoading = signal<boolean>(false);
+  errorMessage = signal<string | null>(null);
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {

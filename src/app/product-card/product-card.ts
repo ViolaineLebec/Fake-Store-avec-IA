@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { Product } from '../services/product';
+import { Component, Input, inject } from '@angular/core';
+import { Product } from '../home/home';
+import { Cart as CartService } from '../services/cart';
 
 @Component({
   selector: 'app-product-card',
@@ -8,5 +9,11 @@ import { Product } from '../services/product';
   styleUrl: './product-card.css'
 })
 export class ProductCard {
-  @Input() product!: Product;
+  @Input({ required: true }) produit!: Product;
+
+  private cartService = inject(CartService);
+
+  ajouterAuPanier() {
+    this.cartService.addToCart(this.produit);
+  }
 }
