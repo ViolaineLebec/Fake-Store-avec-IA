@@ -1,5 +1,5 @@
 import { Component, Input, inject } from '@angular/core';
-import { Product } from '../home/home';
+import { Product } from '../services/product';
 import { Cart as CartService } from '../services/cart';
 
 @Component({
@@ -9,11 +9,11 @@ import { Cart as CartService } from '../services/cart';
   styleUrl: './product-card.css'
 })
 export class ProductCard {
-  @Input({ required: true }) produit!: Product;
+  @Input({ required: true }) product!: Product;
 
   private cartService = inject(CartService);
 
   ajouterAuPanier() {
-    this.cartService.addToCart(this.produit);
+    this.cartService.addToCart(this.product);
   }
 }
