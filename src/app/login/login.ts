@@ -1,9 +1,16 @@
 import { Component } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './login.html',
-  styleUrl: './login.css',
+  styleUrl: './login.css'
 })
-export class Login {}
+export class Login {
+  constructor(private router: Router) {}
+
+onSeConnecter() {
+  this.router.navigate(['/home']);
+}
+}
