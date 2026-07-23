@@ -11,5 +11,6 @@ export const routes: Routes = [
   { path: 'inscription', component: Inscription },
   { path: 'home', component: Home },
   { path: 'cart', component: Cart },
+  { path: 'error', component: NotFound },
   { path: '**', component: NotFound },
 ];

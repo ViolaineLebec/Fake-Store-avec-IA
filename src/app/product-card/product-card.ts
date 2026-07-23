@@ -6,7 +6,7 @@ import { Cart as CartService } from '../services/cart';
   selector: 'app-product-card',
   imports: [],
   templateUrl: './product-card.html',
-  styleUrl: './product-card.css',
+  styleUrl: './product-card.css'
 })
 export class ProductCard {
   @Input({ required: true }) produit!: Product;
