@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-inscription',
@@ -7,4 +7,10 @@ import { RouterLink } from '@angular/router';
   templateUrl: './inscription.html',
   styleUrl: './inscription.css',
 })
-export class Inscription {}
+export class Inscription {
+  constructor(private router: Router) {}
+
+  onCreerCompte() {
+    this.router.navigate(['/login']);
+  }
+}
