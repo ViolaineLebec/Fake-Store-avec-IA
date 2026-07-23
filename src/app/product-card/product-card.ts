@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Product } from '../home/home';
-
+import { Cart as CartService } from '../services/cart';
 
 @Component({
   selector: 'app-product-card',
@@ -9,18 +9,11 @@ import { Product } from '../home/home';
   styleUrl: './product-card.css',
 })
 export class ProductCard {
-  
-  produit = {
-    nom: 'Ordinateur portable HP',
-    prix: 899,
-    image: 'assets/images/hp.jpg'
-  };
+  @Input({ required: true }) produit!: Product;
+
+  private cartService = inject(CartService);
 
   ajouterAuPanier() {
-    alert(this.produit.nom + ' ajouté au panier !');
+    this.cartService.addToCart(this.produit);
   }
 }
-
-
-
-

@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { CartItem, Cart as CartService } from '../services/cart';
 
 @Component({
   selector: 'app-selected-card',
@@ -7,23 +8,15 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './selected-card.css',
 })
 export class SelectedCard {
-  productName = 'Casque sans fil Pulse';
-  price = 89.0;
-  imageUrl = 'https://picsum.photos/id/367/100/100';
-  quantity = 1;
+  @Input({ required: true }) item!: CartItem;
 
-  @Output() quantityChange = new EventEmitter<number>();
+  private cartService = inject(CartService);
 
   increment() {
-    this.quantity++;
-    this.quantityChange.emit(this.quantity);
+    this.cartService.updateQuantity(this.item.product.id, this.item.quantity + 1);
   }
 
   decrement() {
-    if (this.quantity === 0) {
-      return;
-    }
-    this.quantity--;
-    this.quantityChange.emit(this.quantity);
+    this.cartService.updateQuantity(this.item.product.id, this.item.quantity - 1);
   }
 }

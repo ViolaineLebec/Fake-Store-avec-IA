@@ -84,9 +84,4 @@ export class Home {
 
   isLoading = signal<boolean>(false);
   errorMessage = signal<string | null>(null);
-
-  onAddToCart(product: Product): void {
-    // TODO: brancher sur un CartService quand il sera prêt
-    console.log('Ajout au panier :', product);
-  }
 }

@@ -2,13 +2,13 @@
   <img
     [src]="produit.image"
     class="card-img-top"
-    [alt]="produit.nom">
+    [alt]="produit.title">
 
   <div class="card-body">
-    <h5 class="card-title">{{ produit.nom }}</h5>
+    <h5 class="card-title">{{ produit.title }}</h5>
 
     <p class="card-text">
-      {{ produit.prix }} €
+      {{ produit.price }} €
     </p>
 
     <button class="btn btn-primary btn-sm" (click)="ajouterAuPanier()">
