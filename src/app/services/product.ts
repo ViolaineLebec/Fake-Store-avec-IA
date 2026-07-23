@@ -1,4 +1,9 @@
-import { Service } from '@angular/core';
+import { provideHttpClient } from '@angular/common/http';
+import { ApplicationConfig } from '@angular/core';
 
-@Service()
-export class Product {}
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideHttpClient(),
+    // ... tes autres providers
+  ]
+};
