@@ -1,0 +1,23 @@
+.custom-navbar {
+  background-color: #1E3A8A !important;
+}
+
+.custom-navbar .nav-link {
+  color: #FFFFFF !important;
+}
+
+.custom-navbar .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Changement de couleur au survol des liens*/
+.custom-navbar .nav-link:hover,
+.custom-navbar .nav-link:focus {
+  color: #CBD5E1 !important;
+}
+
+/* Indication visuelle pour le lien actif */
+.custom-navbar .nav-link.active {
+  color: #FFFFFF !important;
+  font-weight: bold;
+}
