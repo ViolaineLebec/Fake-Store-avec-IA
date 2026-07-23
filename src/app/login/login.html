@@ -5,12 +5,11 @@
     <form>
       <div class="mb-3">
         <label class="form-label">Identifiant</label>
-        <input type="text" class="form-control" placeholder="vous@exemple.com">
+        <input type="email" class="form-control" placeholder="vous@exemple.com" [(ngModel)]="email" name="email">
       </div>
       <div class="mb-3">
         <label class="form-label">Mot de passe</label>
-        <input type="password" class="form-control" placeholder="********">
-      </div>
+        <input type="password" class="form-control" placeholder="********" [(ngModel)]="password" name="password">      </div>
       <button type="button" class="btn btn-primary w-100" (click)="onSeConnecter()">Se connecter</button>
     </form>
 

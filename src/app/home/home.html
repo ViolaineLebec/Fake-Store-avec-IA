@@ -1,19 +1,11 @@
-
 <div class="container mt-4">
   <h1 class="mb-4">Catalogue</h1>
 
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
-
-    <div class="col">
-      <app-product-card></app-product-card>
-    </div>
-
-    
-
-    
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3 mb-4">
+    @for (product of products(); track product.id) {
+      <div class="col">
+        <app-product-card [product]="product"></app-product-card>
+      </div>
+    }
   </div>
 </div>
-
-
-
-
