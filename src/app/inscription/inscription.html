@@ -1,1 +1,23 @@
-<p>inscription works!</p>
+<div class="min-vh-100 d-flex align-items-center justify-content-center" style="background-color: #CBD5E1; color: #1E3A8A;">
+  <div style="max-width: 400px; width: 100%;">
+    <h1 class="mb-4">Inscription</h1>
+
+    <form>
+      <div class="mb-3">
+        <label class="form-label">Identifiant</label>
+        <input type="text" class="form-control" placeholder="vous@exemple.com">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Mot de passe</label>
+        <input type="password" class="form-control" placeholder="********">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Confirmer le mot de passe</label>
+        <input type="password" class="form-control" placeholder="********">
+      </div>
+      <button type="button" class="btn btn-primary w-100" (click)="onCreerCompte()">Créer un compte</button>
+    </form>
+
+    <p class="mt-3">Déjà un compte ? <a routerLink="/login">Se connecter</a></p>
+  </div>
+</div>
