@@ -13,9 +13,16 @@ import { Router } from '@angular/router';
 export class Cart {
   cartService = inject(CartService);
   private router = inject(Router);
-
+ 
+  get isCartEmpty(): boolean {
+    return this.cartService.items().length === 0;
+  }
+ 
   passerCommande(): void {
+    if (this.isCartEmpty) {
+      return; // sécurité : bloque même si le bouton était cliquable
+    }
     this.router.navigate(['/merci']);
   }
-}
 
+}
