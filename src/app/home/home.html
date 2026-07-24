@@ -1,11 +1,41 @@
-<div class="container mt-4">
-  <h1 class="mb-4">Catalogue</h1>
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+    <h1 class="mb-0 p-3">Catalogue</h1>
+    <input
+      type="search"
+      class="form-control"
+      style="max-width: 300px;"
+      placeholder="Rechercher un article..."
+      [ngModel]="searchTerm()"
+      (ngModelChange)="onSearchChange($event)"
+    >
+  </div>
 
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3 mb-4">
-    @for (product of products(); track product.id) {
+    @for (product of pagedProducts(); track product.id) {
       <div class="col">
         <app-product-card [product]="product"></app-product-card>
       </div>
     }
   </div>
+
+  @if (totalPages() > 1) {
+    <nav class="d-flex justify-content-center">
+      <ul class="pagination">
+        <li class="page-item" [class.disabled]="currentPage() === 1">
+          <button class="page-link" (click)="previousPage()">Précédent</button>
+        </li>
+
+        @for (page of pageNumbers(); track page) {
+        <li class="page-item" [class.active]="currentPage() === page">
+          <button class="page-link" (click)="goToPage(page)">{{ page }}</button>
+        </li>
+        }
+
+        <li class="page-item" [class.disabled]="currentPage() === totalPages()">
+          <button class="page-link" (click)="nextPage()">Suivant</button>
+        </li>
+      </ul>
+    </nav>
+  }
 </div>

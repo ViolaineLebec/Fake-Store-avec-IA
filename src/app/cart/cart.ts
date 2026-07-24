@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SelectedCard } from '../selected-card/selected-card';
 import { Cart as CartService } from '../services/cart';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -11,16 +12,19 @@ import { Cart as CartService } from '../services/cart';
 })
 export class Cart {
   cartService = inject(CartService);
-  orderConfirmed = false;
+  private router = inject(Router);
  
   get isCartEmpty(): boolean {
     return this.cartService.items().length === 0;
   }
  
-  submitOrder(): void {
+  passerCommande(): void {
     if (this.isCartEmpty) {
-      return; // sécurité : bloque même si jamais le bouton était cliquable
+      return; // sécurité : bloque même si le bouton était cliquable
     }
-    this.orderConfirmed = true;
+    this.router.navigate(['/merci']);
   }
+
 }
+
+
