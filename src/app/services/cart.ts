@@ -14,6 +14,11 @@ export class Cart {
   total = computed(() =>
     this.itemsSignal().reduce((sum, item) => sum + item.product.price * item.quantity, 0)
   );
+  
+itemCount = computed(() =>
+    this.itemsSignal().reduce((sum, item) => sum + item.quantity, 0)
+  );
+
 
   addToCart(product: Product): void {
     const existing = this.itemsSignal().find((item) => item.product.id === product.id);

@@ -12,5 +12,5 @@ export const routes: Routes = [
   { path: 'home', component: Home },
   { path: 'cart', component: Cart },
   { path: 'error', component: NotFound },
-  { path: '**', component: NotFound },
+  { path: '**',component: NotFound },
 ];
