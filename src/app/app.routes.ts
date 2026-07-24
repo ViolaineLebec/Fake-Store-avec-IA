@@ -3,7 +3,7 @@ import { Login } from './login/login';
 import { Inscription } from './inscription/inscription';
 import { Home } from './home/home';
 import { Cart } from './cart/cart';
-import { Description} from './description/description';
+import { Description } from './description/description';
 import { NotFound } from './not-found/not-found';
 
 export const routes: Routes = [
