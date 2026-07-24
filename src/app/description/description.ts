@@ -1,6 +1,7 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService, Product } from '../services/product';
+import { Cart as CartService } from '../services/cart';
 
 @Component({
   selector: 'app-description',
@@ -20,4 +21,13 @@ export class Description implements OnInit {
       this.product.set(product);
     });
   }
+
+  private cartService = inject(CartService);
+
+  ajouterAuPanier() {
+  const product = this.product();
+  if (product) {
+    this.cartService.addToCart(product);
+  }
+}
 }
