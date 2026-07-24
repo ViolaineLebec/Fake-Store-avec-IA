@@ -1,39 +1,90 @@
-<div class="col-12 mt-5 p-5">
-<div class="row">
-<h4 class="text-right">ID Commande: <span>175</span></h4>
-<div class="col-6">
-    <app-selected-card *ngFor="let item of cartService.items()" [item]="item"></app-selected-card>
-</div>
-<div class="container mt-4 col-6" style="max-width: 600px;">
+<div class="container my-3 my-md-5">
   
-  <div class="col-6">
+  <!-- En-tête (Responsive : passe en colonne sur mobile, côte à côte sur tablette/desktop) -->
+  <div class="row mb-4 align-items-sm-center g-2">
+    <div class="col-12 col-sm-6">
+      <h3 class="fw-bold m-0">Mon Panier</h3>
+    </div>
+    <div class="col-12 col-sm-6 text-sm-end">
+      <span class="fs-6 fs-sm-5 text-muted">ID Commande : <strong class="text-dark">175</strong></span>
+    </div>
+  </div>
 
-  <form>
-    <div class="mb-3">
-      <label class="form-label">Adresse facturation </label>
-      <input type="text" class="form-control" placeholder="12 rue des Lilas, Clermont-Ferrand">
+  <!-- Contenu Principal -->
+  <div class="row g-4">
+    
+    <!-- COLONNE GAUCHE : Liste des articles -->
+    <div class="col-12 col-lg-6">
+      <div class="p-3 p-md-4 border rounded-3 bg-light shadow-sm">
+        <h5 class="mb-4 fw-semibold">Articles sélectionnés</h5>
+        
+        <div class="cart-items-list mb-4">
+          <app-selected-card 
+            *ngFor="let item of cartService.items()" 
+            [item]="item" 
+            class="d-block w-100 mb-3">
+          </app-selected-card>
+        </div>
+
+        <hr>
+
+        <!-- Prix Total -->
+        <div class="d-flex justify-content-between align-items-center pt-2">
+          <span class="fs-5 fw-medium">Prix total :</span>
+          <span class="fs-4 fw-bold text-primary">{{ cartService.total().toFixed(2) }} €</span>
+        </div>
+      </div>
     </div>
-    <div class="mb-3">
-      <label class="form-label">Adresse Livraison </label>
-      <input type="text" class="form-control" placeholder="12 rue des Lilas, Clermont-Ferrand">
+
+    <!-- COLONNE DROITE : Formulaire de livraison & paiement -->
+    <div class="col-12 col-lg-6">
+      <div class="p-3 p-md-4 border rounded-3 bg-white shadow-sm">
+        <h5 class="mb-4 fw-semibold">Livraison & Paiement</h5>
+        
+        <form>
+          <!-- Adresse de facturation -->
+          <div class="mb-3">
+            <label class="form-label fw-medium">Adresse de facturation</label>
+            <input type="text" class="form-control" placeholder="12 rue des Lilas, Clermont-Ferrand">
+          </div>
+
+          <!-- Adresse de livraison -->
+          <div class="mb-3">
+            <label class="form-label fw-medium">Adresse de livraison</label>
+            <input type="text" class="form-control" placeholder="12 rue des Lilas, Clermont-Ferrand">
+          </div>
+
+          <hr class="my-4">
+
+          <!-- Numéro de carte -->
+          <div class="mb-3">
+            <label class="form-label fw-medium">Numéro de carte (paiement)</label>
+            <input type="text" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19">
+          </div>
+
+          <!-- Expiration et CVC -->
+          <div class="row g-2 mb-4">
+            <div class="col-7 col-sm-8">
+              <label class="form-label fw-medium">Date d'expiration</label>
+              <input type="text" class="form-control" placeholder="MM/AA" maxlength="5">
+            </div>
+            <div class="col-5 col-sm-4">
+              <label class="form-label fw-medium">CVC</label>
+              <input type="text" class="form-control" placeholder="123" maxlength="4">
+            </div>
+          </div>
+
+          <!-- Bouton de confirmation -->
+
+          <button type="button" class="btn btn-primary btn-lg w-100 fw-bold col-5 col-sm-4 d-block d-sm-none" [disabled]="isCartEmpty" (click)="passerCommande()">
+            Payer
+          </button>
+           <button type="button" class="btn btn-primary btn-lg w-100 fw-bold col-5 col-sm-4 btn btn-primary d-none d-sm-block" [disabled]="isCartEmpty" (click)="passerCommande()">
+            Commander
+          </button>
+        </form>
+      </div>
     </div>
-    <div class="mb-3">
-      <label class="form-label">Numéro de carte (paiement)</label>
-      <input type="text" class="form-control" placeholder="1234 5678 9012 3456">
-    </div>
-    <div class="mb-3">
-      <input type="text" class="form-control" placeholder="Date d'expiration">
-    </div>
-    <div class="mb-3 col -2">
-      <input type="text" class="form-control" placeholder="CVC">
-    </div>
-    <button type="button" class="btn btn-primary w-100" [disabled]="isCartEmpty" (click)="passerCommande()">Commander</button>
-  </form>
-  <div>
-  <h5 class="text-start">Prix total : {{ cartService.total().toFixed(2) }} €</h5>
-  </div>
-  </div>
+
   </div>
 </div>
-</div>
-
