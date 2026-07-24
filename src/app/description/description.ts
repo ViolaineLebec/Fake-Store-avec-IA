@@ -1,29 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ProductService, Product } from '../services/product';
 
 @Component({
-  selector: 'app-descritpion,
+  selector: 'app-description',
+  imports: [],
   templateUrl: './description.html',
-  styleUrl: './descritpion.css',
+  styleUrl: './description.css',
 })
-export class ProductDetailComponent implements OnInit {
+export class Description implements OnInit {
+  private route = inject(ActivatedRoute);
+  private productService = inject(ProductService);
 
-  produit: any;
-
-  produits = [
-    {
-      id: 1,
-      nom: 'Fjallraven - Foldsack No. 1 Backpack',
-      prix: 109.95,
-      image: 'assets/images/sac.jpg',
-      description: 'Sac à dos très résistant pour ordinateur portable jusqu’à 15 pouces.'
-    }
-  ];
-
-  constructor(private route: ActivatedRoute) {}
+  product = signal<Product | null>(null);
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.produit = this.produits.find(p => p.id === id);
+    this.productService.getProductById(id).subscribe((product) => {
+      this.product.set(product);
+    });
   }
 }

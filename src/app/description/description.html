@@ -1,9 +1,14 @@
-<div class="card h-100">
-  <img [src]="product.image" class="card-img-top p-3" [alt]="product.title" style="height: 180px; object-fit: contain;">
-  <div class="card-body d-flex flex-column">
-    <h5 class="card-title" style="font-size: 0.95rem;">{{ product.title }}</h5>
-    <p class="card-text mt-auto">{{ product.price }} €</p>
-    <p class="card-text mt-auto">{{ product.description }} </p>
-    <button class="btn btn-primary btn-sm" (click)="ajouterAuPanier()">Quitter</button>
-  </div>
+<div class="container mt-4">
+  @if (product(); as p) {
+    <div class="row">
+      <div class="col-md-4">
+        <img [src]="p.image" [alt]="p.title" class="img-fluid">
+      </div>
+      <div class="col-md-8">
+        <h2>{{ p.title }}</h2>
+        <p class="fs-4">{{ p.price }} €</p>
+      </div>
+    </div>
+  }
+>>>>>>> 89400a3f45216af9e84a0c159ae628c8c72e8876
 </div>
