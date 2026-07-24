@@ -2,3 +2,12 @@ body {
     background-color: #f8fafc;
     color: #1E3A8A;
 }
+
+.btn {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
