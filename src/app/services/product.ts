@@ -7,6 +7,7 @@ export interface Product {
   title: string;
   price: number;
   image: string;
+  description: string;
 }
 
 @Injectable({
@@ -19,5 +20,9 @@ export class ProductService {
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.apiUrl}`);
+  }
+
+  getProductById(id: number): Observable<Product> {
+    return this.http.get<Product>(`${this.apiUrl}/${id}`);
   }
 }
