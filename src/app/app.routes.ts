@@ -12,7 +12,7 @@ export const routes: Routes = [
   { path: 'inscription', component: Inscription },
   { path: 'home', component: Home },
   { path: 'cart', component: Cart },
-  { path: 'description', component: Description },
+  { path: 'description/:id', component: Description },
   { path: 'error', component: NotFound },
   { path: '**', component: NotFound },
 ];
