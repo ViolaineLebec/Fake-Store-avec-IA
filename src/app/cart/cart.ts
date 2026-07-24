@@ -11,4 +11,16 @@ import { Cart as CartService } from '../services/cart';
 })
 export class Cart {
   cartService = inject(CartService);
+  orderConfirmed = false;
+ 
+  get isCartEmpty(): boolean {
+    return this.cartService.items().length === 0;
+  }
+ 
+  submitOrder(): void {
+    if (this.isCartEmpty) {
+      return; // sécurité : bloque même si jamais le bouton était cliquable
+    }
+    this.orderConfirmed = true;
+  }
 }
