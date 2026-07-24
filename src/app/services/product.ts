@@ -7,6 +7,7 @@ export interface Product {
   title: string;
   price: number;
   image: string;
+  description: string;
 }
 
 @Injectable({
@@ -18,6 +19,10 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.apiUrl}?limit=8`);
+    return this.http.get<Product[]>(`${this.apiUrl}`);
+  }
+
+  getProductById(id: number): Observable<Product> {
+    return this.http.get<Product>(`${this.apiUrl}/${id}`);
   }
 }

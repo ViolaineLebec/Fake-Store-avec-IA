@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../services/auth';
+import { Auth } from '../services/auth';
 
 @Component({
   selector: 'app-inscription',
@@ -14,7 +14,7 @@ export class Inscription {
   password = '';
   confirmPassword = '';
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private authService: Auth) {}
 
   onCreerCompte() {
     if (this.password !== this.confirmPassword) {
