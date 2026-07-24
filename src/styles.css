@@ -1,8 +1,12 @@
+<<<<<<< HEAD
+/* You can add global styles to this file, and also import other style files */
+=======
 body {
     background-color: #f8fafc;
     color: #1E3A8A;
 }
 
+>>>>>>> 3bb47ed2834449c4cf919133a4abf921a6d20c05
 .btn {
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
