@@ -21,13 +21,14 @@
           <a class="nav-link" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link position-relative" routerLink="/cart" routerLinkActive="active">Panier
-
-            <span
+          <a class="nav-link" routerLink="/cart" routerLinkActive="active"><span class="position-relative d-inline-block">
+            Panier
+        <span
               *ngIf="cartService.itemCount() > 0"
               class="badge rounded-pill bg-white position-absolute top-0 start-100 translate-middle" style="color: #1E3A8A;">
               
               {{ cartService.itemCount() }}
+            </span>
             </span>
           
              </a>
