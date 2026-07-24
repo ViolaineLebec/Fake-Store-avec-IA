@@ -1,6 +1,4 @@
-
-
-<div class="col-12">
+<div class="col-12 mt-5 p-5">
 <div class="row">
 <h4 class="text-right">ID Commande: <span>175</span></h4>
 <div class="col-6">
@@ -29,7 +27,7 @@
     <div class="mb-3 col -2">
       <input type="text" class="form-control" placeholder="CVC">
     </div>
-    <button type="button" class="btn btn-primary w-100">Commander</button>
+    <button (click)="passerCommande()" type="button" class="btn btn-primary w-100">Commander</button>
   </form>
   <div>
   <h5 class="text-start">Prix total : {{ cartService.total().toFixed(2) }} €</h5>
